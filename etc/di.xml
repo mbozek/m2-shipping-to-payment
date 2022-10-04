@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Payment\Model\Checks\SpecificationFactory">
+        <arguments>
+            <argument name="mapping" xsi:type="array">
+                <item name="ship_to_pay" xsi:type="object">Jqode\ShippingToPayment\Model\Checks\Shipping</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="Jqode\ShippingToPayment\Plugin\AdditionalChecks">
+        <arguments>
+            <argument name="additionalChecks" xsi:type="array">
+                <item name="ship_to_pay" xsi:type="string">ship_to_pay</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="Magento\Payment\Model\Checks\SpecificationFactory">
+        <plugin name="payments_additional_checks" type="Jqode\ShippingToPayment\Plugin\AdditionalChecks"/>
+    </type>
+</config>
